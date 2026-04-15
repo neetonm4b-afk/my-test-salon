@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, PlaySquare, Bell, HelpCircle, LogOut } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";

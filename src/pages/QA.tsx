@@ -50,7 +50,7 @@ export function QA() {
       >
         <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.08)_0%,_transparent_70%)] pointer-events-none"></div>
 
-        <Accordion type="single" collapsible className="w-full relative z-10">
+        <Accordion className="w-full relative z-10">
           {FAQS.map((faq) => (
             <AccordionItem key={faq.id} value={faq.id} className="border-b border-gold-900/20 py-2">
               <AccordionTrigger className="text-left hover:text-gold-300 hover:no-underline transition-colors px-2">

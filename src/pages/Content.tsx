@@ -23,7 +23,7 @@ export function Content() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
   };
 
   return (
@@ -39,7 +39,7 @@ export function Content() {
       </div>
 
       <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {DUMMY_CONTENT.map((item, index) => (
+        {DUMMY_CONTENT.map((item) => (
           <motion.div
             key={item.id}
             variants={itemVariants}
