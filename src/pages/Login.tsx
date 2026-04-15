@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, getRedirectResult } from "firebase/auth";
 import { auth, googleProvider, appleProvider } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 import { motion } from "framer-motion";
@@ -18,6 +18,25 @@ export function Login() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // Check for redirect result on mount
+    const checkRedirect = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result) {
+          navigate("/");
+        }
+      } catch (err: any) {
+        console.error("Redirect auth error:", err);
+        if (err.code === "auth/internal-error" || err.message?.includes("missing initial state")) {
+          setError("ブラウザの制限により認証状態が失われました。別のブラウザでお試しいただくか、再度ログインを行ってください。");
+        } else {
+          setError("ログイン処理中にエラーが発生しました。");
+        }
+      }
+    };
+
+    checkRedirect();
+
     if (currentUser) {
       navigate("/");
     }
