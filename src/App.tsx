@@ -8,6 +8,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Content } from "./pages/Content";
 import { Announcements } from "./pages/Announcements";
 import { QA } from "./pages/QA";
+import { Logout } from "./pages/Logout";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           
           <Route
             path="/*"

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useAuth } from "../contexts/AuthContext";
-import { Crown, Star, Sparkles } from "lucide-react";
+import { Crown, Star, Sparkles, LogOut } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export function Dashboard() {
@@ -26,6 +26,16 @@ export function Dashboard() {
 
   return (
     <div className="p-8 md:p-12 max-w-6xl mx-auto flex flex-col items-center justify-center min-h-[80vh] text-center relative z-10 w-full overflow-hidden">
+      {/* Top right logout button for quick access */}
+      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-50">
+        <button
+          onClick={() => (window.location.href = "/logout")}
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-gold-900/30 text-gold-200 hover:text-white hover:bg-gold-900/20 transition-all duration-300 text-sm font-serif group"
+        >
+          <LogOut size={16} className="text-gold-500 group-hover:scale-110 transition-transform" />
+          <span>ログアウト</span>
+        </button>
+      </div>
       
       {/* Massive radial entry blast for Dashboard */}
       <motion.div 
